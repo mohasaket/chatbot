@@ -47,11 +47,10 @@ body {
   border-radius: 5px;
 }
 .react-chatbot-kit-chat-bot-message {
-  background-color: #2898ec;
   padding: 10px;
   border-radius: 5px;
   font-size: 0.9rem;
-  color: #fff;
+color: #000;
   font-weight: medium;
   position: relative;
   width: fit-content;

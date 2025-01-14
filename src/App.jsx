@@ -1,6 +1,6 @@
 import Chatbot from "react-chatbot-kit";
 import "react-chatbot-kit/build/main.css";
-// import Header from '../src/components/Layout/Header'
+
 import {
   ActionProvider,
   botConfig,
@@ -11,7 +11,6 @@ const App = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full h-screen bg-white shadow-lg rounded-lg ">
-        {/* <Header/> */}
         <Chatbot
           className="w-full h-screen P-4"
           config={botConfig}

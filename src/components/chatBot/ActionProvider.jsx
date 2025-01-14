@@ -1,4 +1,4 @@
-import axios from "axios";
+import { fetchPostData } from '../../utils/apiService'; 
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
@@ -22,15 +22,14 @@ class ActionProvider {
     }));
 
     try {
-      const response = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
-      const message = this.createChatBotMessage(`API Response: ${response.data.title}`);
+      const title = await fetchPostData(); // Call the API service function
+      const message = this.createChatBotMessage(`API Response: ${title}`);
       this.setState((prev) => ({
         ...prev,
         messages: [...prev.messages, message],
       }));
-    // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      const errorMessage = this.createChatBotMessage("خطایی رخ داده است.");
+      const errorMessage = this.createChatBotMessage(error.message);
       this.setState((prev) => ({
         ...prev,
         messages: [...prev.messages, errorMessage],
