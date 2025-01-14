@@ -31,8 +31,7 @@ In the development environment, we've configured the app to be accessible via th
 4. **Configured Api:**
    -// apiService.js
      ```js
-    const response = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
-};     ```
+    const response = await axios.get("https://jsonplaceholder.typicode.com/posts/1");    ```
 
 ### Running the Development Server
 
