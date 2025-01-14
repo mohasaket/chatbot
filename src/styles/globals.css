@@ -6,7 +6,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, #a0d3e8, #e0f7fa);
+  background: #fff;
 }
 .chat-message-container {
   width: 100%;
@@ -43,7 +43,7 @@ body {
 
 .react-chatbot-kit-chat-inner-container {
   height: 100%;
-  background-color: #fff;
+  background: linear-gradient(to bottom, #a0d2e885, #e0f7fa67);
   border-radius: 5px;
 }
 .react-chatbot-kit-chat-bot-message {
