@@ -1,4 +1,4 @@
-# Project Name
+# Project Name:ChatBot
 
 ## Custom Domain Setup for Development
 
@@ -14,11 +14,11 @@ In the development environment, we've configured the app to be accessible via th
      };
      ```
 
-2. **Set the Development Server Host to `www.omidbank.com`:**
+2. **Set the Development Server Host to `www.moha.com`:**
    - The Vite development server has been configured to listen on the custom domain instead of `localhost`:
      ```js
      server: {
-       host: 'www.omidbank.com', // Custom domain for local development
+       host: 'www.moha.com', // Custom domain for local development
        port: 5173, // The port for the development server
      };
      ```
