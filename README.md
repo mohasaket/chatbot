@@ -30,6 +30,7 @@ In the development environment, we've configured the app to be accessible via th
 
 4. **Configured Api:**
    -// apiService.js
+     ```js
 import axios from "axios";
 import translations from "./translations";
 export const fetchPostData = async () => {
@@ -41,7 +42,7 @@ export const fetchPostData = async () => {
   } catch (error) {
     throw new Error(translations.fa.error);
   }
-};
+};     ```
 
 ### Running the Development Server
 
