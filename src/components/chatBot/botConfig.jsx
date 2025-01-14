@@ -52,8 +52,7 @@ const botConfig = {
       border: "1px solid #000",
     },
     // Overrides the chat button styles
-    chatButton: {
-      backgroundColor: "Violet", // Change this color as needed
+    chatButton: { // Change this color as needed
       borderRadius: "50%", // Add border radius for rounded corners
       color: "#fff", // Change text color
       padding: "5px", // Adjust padding
