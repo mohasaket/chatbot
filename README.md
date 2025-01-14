@@ -24,9 +24,24 @@ In the development environment, we've configured the app to be accessible via th
      ```
 
 3. **Configured Local Hosts File:**
-   - To map `www.omidbank.com` to the local machine (`127.0.0.1`), update the local `hosts` file:
+   - To map `www.MOHA.com` to the local machine (`127.0.0.1`), update the local `hosts` file:
      - **MacOS/Linux**: Add `127.0.0.1 www.omidbank.com` to `/etc/hosts`.
      - **Windows**: Add `127.0.0.1 www.omidbank.com` to `C:\Windows\System32\drivers\etc\hosts`.
+
+4. **Configured Api:**
+   -// apiService.js
+import axios from "axios";
+import translations from "./translations";
+export const fetchPostData = async () => {
+
+  try {
+    const response = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+    return response.data.title;
+  // eslint-disable-next-line no-unused-vars
+  } catch (error) {
+    throw new Error(translations.fa.error);
+  }
+};
 
 ### Running the Development Server
 
