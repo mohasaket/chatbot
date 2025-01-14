@@ -2,12 +2,15 @@ import { createChatBotMessage, createCustomMessage } from "react-chatbot-kit";
 import Logo from '../../assets/img/logo.png'
 import FlightBotAvatar from '../../assets/img/bot.png';
 import UserAvatar from '../../assets/img/user.png';
+import translations from '../../utils/translations';
+
 const botName = "امید بانک";
 
 const botConfig = {
+  language: translations.fa,
   botName: botName,
   initialMessages: [
-    createChatBotMessage(`سلام امید بانکی عزیز. چه طور میتوانم کمکتون کنم؟`),
+    createChatBotMessage(translations.fa.greeting),
     createCustomMessage('Test', 'custom'),
   ],
   
