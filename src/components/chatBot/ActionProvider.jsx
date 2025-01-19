@@ -6,6 +6,7 @@ class ActionProvider {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
     this.language = Object.prototype.hasOwnProperty.call(translations, language) ? language : 'fa';
+    this.isLoading = false;
   }
 
   getTranslation(key) {
@@ -25,28 +26,46 @@ class ActionProvider {
   }
 
   async defaultResponse() {
-    const loadingMessage = this.createChatBotMessage(this.getTranslation('loading'));
+    const loadingMessage = this.createChatBotMessage(
+      "⏳...",
+      {
+        loading: true,
+        withAvatar: true,
+      }
+    );
+    
     this.setState((prev) => ({
       ...prev,
       messages: [...prev.messages, loadingMessage],
     }));
 
     try {
-      console.log("Fetching data from API...");
       const title = await fetchPostData();
-      console.log("API response received:", title);
-      const message = this.createChatBotMessage(`${this.getTranslation('apiResponse')} ${title}`);
       this.setState((prev) => ({
         ...prev,
-        messages: [...prev.messages, message],
+        messages: prev.messages.map((msg, index) => {
+          if (index === prev.messages.length - 1) {
+            return this.createChatBotMessage(`${this.getTranslation('apiResponse')} ${title}`, {
+              loading: false,
+              withAvatar: true,
+            });
+          }
+          return msg;
+        }),
       }));
-    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       console.error("Error fetching data:", error);
-      const errorMessage = this.createChatBotMessage(this.getTranslation('error'));
       this.setState((prev) => ({
         ...prev,
-        messages: [...prev.messages, errorMessage],
+        messages: prev.messages.map((msg, index) => {
+          if (index === prev.messages.length - 1) {
+            return this.createChatBotMessage(this.getTranslation('error'), {
+              loading: false,
+              withAvatar: true,
+            });
+          }
+          return msg;
+        }),
       }));
     }
   }

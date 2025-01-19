@@ -12,7 +12,7 @@ const App = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full h-screen bg-white shadow-lg rounded-lg ">
         <Chatbot
-          className="w-full h-screen P-4"
+          className="w-full h-screen P-4 dir-rtl"
           config={botConfig}
           placeholderText="متن پیام خود را اینجا وارد کنید..."
           messageParser={MessageParser}

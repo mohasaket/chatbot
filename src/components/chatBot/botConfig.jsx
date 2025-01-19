@@ -1,8 +1,9 @@
 import { createChatBotMessage, createCustomMessage } from "react-chatbot-kit";
-import Logo from '../../assets/img/logo.png'
-import FlightBotAvatar from '../../assets/img/bot.png';
-import UserAvatar from '../../assets/img/user.png';
-import translations from '../../utils/translations';
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import Logo from "../../assets/img/logo.png";
+import FlightBotAvatar from "../../assets/img/bot.png";
+import UserAvatar from "../../assets/img/user.png";
+import translations from "../../utils/translations";
 
 const botName = "امید بانک";
 
@@ -11,36 +12,56 @@ const botConfig = {
   botName: botName,
   initialMessages: [
     createChatBotMessage(translations.fa.greeting),
-    createCustomMessage('Test', 'custom'),
+    createCustomMessage("Test", "custom"),
   ],
-  
+
   customComponents: {
     header: () => (
-      <div style={{ 
-        backgroundColor: '#fff',
-        padding: "12px",
-        borderRadius: "3px",
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        justifyContent:'flex-end'
-      }}>
-        <img 
-          src={Logo} 
-          alt={botName+'Logo'} 
-          style={{ height: 'auto',width:'150px' }}
+      <div
+        style={{
+          backgroundColor: "#fff",
+          padding: "12px",
+          borderRadius: "3px",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          justifyContent: "space-between",
+        }}
+      >
+        <button
+          className="text-violet-600 mx-1 bg-violet-100 p-2 rounded-md hover:text-yellow-900 font-semibold"
+          onClick={() => {
+            console.log("clicked");
+          }}
+        >
+          <MdOutlineKeyboardBackspace className="text-2xl" />
+        </button>
+        <img
+          src={Logo}
+          alt={botName + "Logo"}
+          style={{ height: "auto", width: "150px" }}
         />
-        {/* <span style={{ fontWeight: 'bold' }}>{botName}</span> */}
       </div>
     ),
-    botAvatar: (props) =>  
-    <div className="flex justify-center items-center p-2">
-    <img className="h-10 w-10  mx-1 rounded-full" src={FlightBotAvatar} {...props} />
-    </div>,
+    botAvatar: (props) => (
+      <div className="flex justify-center items-center p-2">
+        <img
+          className="h-10 w-10  mx-1 rounded-full"
+          src={FlightBotAvatar}
+          {...props}
+        />
+      </div>
+    ),
 
-     userAvatar: (props) => <div className="flex justify-center items-center p-2">
-     <img className="h-10 w-10  mx-1 rounded-full" src={UserAvatar} {...props} />
-     </div>,
+    userAvatar: (props) => (
+      <div className="flex justify-center items-center p-2">
+        <img
+          className="h-10 w-10  mx-1 rounded-full"
+          src={UserAvatar}
+          {...props}
+        />
+      </div>
+    ),
   },
 
   customStyles: {
@@ -55,7 +76,8 @@ const botConfig = {
       border: "1px solid #000",
     },
     // Overrides the chat button styles
-    chatButton: { // Change this color as needed
+    chatButton: {
+      // Change this color as needed
       borderRadius: "50%", // Add border radius for rounded corners
       color: "#fff", // Change text color
       padding: "5px", // Adjust padding
@@ -66,8 +88,7 @@ const botConfig = {
       width: "50px",
       height: "50px", // Remove border
     },
-  }
+  },
 };
 
 export default botConfig;
-

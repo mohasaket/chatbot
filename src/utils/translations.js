@@ -8,7 +8,7 @@ const translations = {
     },
     fa: {
       greeting: "سلام به شما چه طور میتوانم کمکتون کنم؟",
-      loading: "در حال دریافت اطلاعات...",
+      loading: "...",
       error: "خطایی رخ داده است.",
       apiResponse: "پاسخ : ",
     },
