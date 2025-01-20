@@ -1,14 +1,17 @@
 class MessageParser {
-    constructor(actionProvider) {
+    constructor(actionProvider, state) {
       this.actionProvider = actionProvider;
+      this.state = state;
     }
   
     parse(message) {
-      if (message.toLowerCase().includes("سلام")) {
-        this.actionProvider.greet();
-      } else {
-        this.actionProvider.defaultResponse();
+      const lowerCaseMessage = message.toLowerCase();
+      
+      if (lowerCaseMessage.trim() === '') {
+        return;
       }
+      
+      this.actionProvider.defaultResponse(message);
     }
   }
   

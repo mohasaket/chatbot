@@ -1,5 +1,6 @@
 import { fetchPostData } from '../../utils/apiService'; 
 import translations from '../../utils/translations';
+import { dataModelChat } from '../../models/dataModelChat';
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc, language = 'fa') {
@@ -25,7 +26,12 @@ class ActionProvider {
     }));
   }
 
-  async defaultResponse() {
+  async defaultResponse(userMessage) {
+    if (!userMessage || typeof userMessage !== 'string') {
+      console.error('Invalid userMessage:', userMessage);
+      return;
+    }
+
     const loadingMessage = this.createChatBotMessage(
       "⏳...",
       {
@@ -40,12 +46,17 @@ class ActionProvider {
     }));
 
     try {
-      const title = await fetchPostData();
+      dataModelChat.prompt = userMessage.trim();
+      const response = await fetchPostData();
+      
+      // Extract the response text properly
+      const responseText = response.response || response.message || JSON.stringify(response);
+      
       this.setState((prev) => ({
         ...prev,
         messages: prev.messages.map((msg, index) => {
           if (index === prev.messages.length - 1) {
-            return this.createChatBotMessage(`${this.getTranslation('apiResponse')} ${title}`, {
+            return this.createChatBotMessage(responseText, {
               loading: false,
               withAvatar: true,
             });
